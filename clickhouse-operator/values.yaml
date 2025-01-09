@@ -1,0 +1,12 @@
+---
+# Namespace to install operator into
+OPERATOR_NAMESPACE: clickhouse-operator
+# Namespace to install metrics-exporter into
+METRICS_EXPORTER_NAMESPACE: clickhouse-operator
+# Operator's docker image
+OPERATOR_IMAGE: registry.local/library/clickhouse-operator:0.23.5
+# Metrics exporter's docker image
+METRICS_EXPORTER_IMAGE: registry.local/library/metrics-exporter:0.23.5
+# Namespaces to watch for events
+WATCH_NAMESPACES:
+  - clickhouse

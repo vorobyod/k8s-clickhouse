@@ -1,0 +1,4 @@
+---
+ZOOKEEPER_IMAGE: registry.local/library/zookeeper:3.8.3
+STORAGE_SIZE: 10Gi
+STORAGE_CLASS: localpath-system

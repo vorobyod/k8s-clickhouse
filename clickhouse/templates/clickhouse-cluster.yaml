@@ -1,0 +1,47 @@
+apiVersion: "clickhouse.altinity.com/v1"
+kind: "ClickHouseInstallation"
+
+metadata:
+  name: {{ .Values.CLUSTER_NAME }}
+  namespace: {{ .Values.CLUSTER_NAMESPACE }}
+
+spec:
+  defaults:
+    templates:
+      dataVolumeClaimTemplate: default
+      podTemplate: clickhouse-template
+ 
+  configuration:
+    zookeeper:
+      nodes: {{ .Values.ZOOKEPER_HOSTS }}
+      session_timeout_ms: 30000
+      operation_timeout_ms: 10000
+      #root: /path/to/zookeeper/node
+      #identity: user:password
+
+    users:
+      {{ .Values.CH_USER }}/password: {{ .Values.CH_PASSWORD }}
+      {{ .Values.CH_USER }}/profile: default
+      {{ .Values.CH_USER }}/networks/ip: "::/0"
+    clusters:
+      - name: clickhouse
+        layout:
+          shardsCount: 2
+          replicasCount: 2
+
+  templates:
+    volumeClaimTemplates:
+      - name: default
+        spec:
+          accessModes:
+            - ReadWriteOnce
+          storageClassName: {{ .Values.STORAGE_CLASS }}
+          resources:
+            requests:
+              storage: {{ .Values.STORAGE_SIZE }}
+    podTemplates:
+      - name: clickhouse-template
+        spec:
+          containers:
+            - name: clickhouse-pod
+              image: {{ .Values.CLICKHOUSE_IMAGE }}

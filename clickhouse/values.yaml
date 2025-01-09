@@ -1,0 +1,21 @@
+---
+# Cluster name
+CLUSTER_NAME: clickhouse
+# Cluster namespace
+CLUSTER_NAMESPACE: clickhouse
+# Clickhouse server image
+CLICKHOUSE_IMAGE: registry.local/library/clickhouse-server:21.3-alpine
+# PVC values
+STORAGE_SIZE: 10Gi
+STORAGE_CLASS: localpath-system
+# Zookeeper host
+ZOOKEEPER_HOSTS:
+  - host: zookeeper-0.zookeepers.mycluster.svc.cluster.local
+    port: 2181
+  - host: zookeeper-1.zookeepers.mycluster.svc.cluster.local
+    port: 2181
+  - host: zookeeper-2.zookeepers.mycluster.svc.cluster.local
+    port: 2181
+# User account to create
+CH_USER: logger
+CH_PASSWORD: testing123

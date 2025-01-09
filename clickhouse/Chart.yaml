@@ -1,0 +1,13 @@
+apiVersion: v2
+appVersion: v0.23.5
+description: A Helm chart for Clickhouse Operarator
+home: https://github.com/Altinity/clickhouse-operator
+keywords:
+- storage
+- object-storage
+- Clickhouse
+name: clickhouse-operator
+sources:
+- https://github.com/Altinity/clickhouse-operator
+type: application
+version: 0.23.5

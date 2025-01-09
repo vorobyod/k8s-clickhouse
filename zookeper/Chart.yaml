@@ -1,0 +1,13 @@
+apiVersion: v2
+appVersion: 3.8.3
+description: A Helm chart for Zookeeper installation
+home: https://github.com/Altinity/clickhouse-operator
+keywords:
+- storage
+- object-storage
+- Zookeeper
+name: zookeper
+sources:
+- https://github.com/Altinity/clickhouse-operator/tree/release-0.23.5/deploy/zookeeper/zookeeper-manually/advanced
+type: application
+version: 3.8.3
